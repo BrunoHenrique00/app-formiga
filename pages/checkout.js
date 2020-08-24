@@ -7,13 +7,13 @@ export default function Checkout() {
   return (
     <div>
       <Head>
-        <title>Formiga Esfirras</title>
+        <title>Formigas Esfirras</title>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"></link>
       </Head>
 
       <Header isCartShow={false} />
       <CartList />
-      <Footer />
+      <Footer content={'Obrigado por comprar conosco! 😆'} />
     </div>
   )
 }

@@ -1,6 +1,8 @@
 import { cartContext } from '../../context/Cart';
 import {useContext ,useState , useRef} from "react"
 import stringPedido from "../../Functions/stringPedido";
+import { AiOutlineWhatsApp } from "react-icons/ai"
+import { VscTriangleRight } from "react-icons/vsc"
 
 export default function CartList(){
     const {cart} = useContext(cartContext)
@@ -41,13 +43,18 @@ export default function CartList(){
 
     return(
         <div className="bg-orange-700 pt-16 flex flex-col items-center">
-            {Object.entries(getCartList()).map(([key, value]) => (
-                <div key={key} className="bg-gray-300 text-center w-5/6 rounded mb-4 font-semibold">
-                   {key}{' '}{value}x
-                </div>
-            ))
-            }
-            <div>
+            <div className="bg-gray-300 w-5/6 rounded mb-4 p-2">
+                {Object.entries(getCartList()).map(([key, value]) => (
+                    <>
+                    <div key={key} className="flex items-center bg-gray-300 rounded font-semibold py-1">
+                    <VscTriangleRight /> {key}{' '}{value}x
+                    </div>
+                    </>
+                ))
+                }
+            </div>
+            
+            <div className="p-2 mb-3 bg-white rounded">
                 <strong>Total:</strong>R${getCartPrice().toFixed(2)}
             </div>
             <div className="p-5 rounded bg-white w-5/6 max-w-6xl">
@@ -58,13 +65,14 @@ export default function CartList(){
                     <span className="text-black font-bold">Forma de pagamento</span>
                     <select ref={inputPayment} className=" block w-full mt-1 rounded p-2 border border-gray-400">
                         <option>Dinheiro</option>
-                        <option>Cartão + taxa</option>
+                        <option>Cartão</option>
                         <option>PicPay</option>
                     </select>
 
                     <span className="text-black font-bold">Localidade</span>
                     <select ref={inputLocation} className=" block w-full mt-1 rounded p-2 border border-gray-400">
-                        <option>Guará 1 e 2 (Grátis)</option>
+                        <option>Guará 1 (Grátis)</option>
+                        <option>Guará 2 (Grátis)</option>
                         <option>Octogonal (R$ 5.00)</option>
                         <option>Sudoeste (R$ 5.00)</option>
                         <option>Cruzeiro (R$ 5.00)</option>
@@ -80,7 +88,13 @@ export default function CartList(){
 
                 </label>
             </div>
-            <button onClick={() => handleOrder()} className="bg-green-500 rounded-lg p-2 mt-10">Enviar Mensagem</button>
+            <div className="pt-5">
+                <strong>ATENÇÃO:</strong> Nossas <strong>esfirras</strong> são <strong>congeladas!</strong>
+            </div>
+            <div onClick={() => handleOrder()} className="flex items-center bg-green-500 rounded-lg p-4 space-x-2 mt-6">
+                <button >Enviar Pedido</button>
+                <AiOutlineWhatsApp className="h-6 w-6" />
+            </div>
         </div>
     )
 }

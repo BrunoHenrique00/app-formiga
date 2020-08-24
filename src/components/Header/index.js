@@ -19,9 +19,11 @@ export default function Header({isCartShow}){
             <div className="font-semibold">FORMIGAS ESFIRRAS</div>
         </Link>
         {isCartShow && 
-        <div className="flex">
-            <FaShoppingCart onClick={handleCartClick} className="h-10 w-10" />
-            <div className="">{cart.length}</div>
+        <div onClick={handleCartClick} className="flex relative px-5">
+            <FaShoppingCart className="h-10 w-10" />
+            {
+                cart.length > 0 && <div className="bg-white rounded-full absolute top-0 right-0 h-6 w-6 z-20 text-center">{cart.length}</div>
+            }
         </div>
         }
         
