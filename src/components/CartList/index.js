@@ -10,6 +10,7 @@ export default function CartList(){
     const inputPayment = useRef()
     const inputLocation = useRef()
     const inputAddress = useRef()
+    const inputObservation = useRef()
 
     function getCartPrice(){
         return cart === [] ? 0 : cart.reduce((sum, { price }) => sum + price,0)
@@ -28,7 +29,8 @@ export default function CartList(){
             name: inputName.current.value,
             payment: inputPayment.current.value,
             address: inputAddress.current.value ,
-            location: inputLocation.current.value
+            location: inputLocation.current.value,
+            observation: inputObservation.current.value,
         }
         const total = getCartPrice()
 
@@ -48,29 +50,36 @@ export default function CartList(){
             <div>
                 <strong>Total:</strong>R${getCartPrice().toFixed(2)}
             </div>
-            <label className="block">
-                <span className="text-black">Nome</span>
-                <input ref={inputName} type="text" className="form-input mt-1 block w-full rounded p-2" placeholder="Seu Nome" />
+            <div className="p-5 rounded bg-white w-5/6 max-w-6xl">
+                <label className="block">
+                    <span className="text-black font-bold">Nome</span>
+                    <input ref={inputName} type="text" className=" mt-1 block w-full rounded p-2 border border-gray-400" placeholder="Seu Nome" />
 
-                <span className="text-black">Forma de pagamento</span>
-                <select ref={inputPayment} className="form-select block w-full mt-1 rounded p-2">
-                    <option>Dinheiro</option>
-                    <option>Cartão + taxa</option>
-                    <option>PicPay</option>
-                </select>
+                    <span className="text-black font-bold">Forma de pagamento</span>
+                    <select ref={inputPayment} className=" block w-full mt-1 rounded p-2 border border-gray-400">
+                        <option>Dinheiro</option>
+                        <option>Cartão + taxa</option>
+                        <option>PicPay</option>
+                    </select>
 
-                <select ref={inputLocation} className="form-select block w-full mt-1 rounded p-2">
-                    <option>Guará 1 e 2 (Grátis)</option>
-                    <option>Octogonal (R$ 5.00)</option>
-                    <option>Sudoeste (R$ 5.00)</option>
-                    <option>Cruzeiro (R$ 5.00)</option>
-                    <option>Águas Claras (R$ 5.00)</option>
-                    <option>Asa Sul (R$ 10.00)</option>
-                </select>
+                    <span className="text-black font-bold">Localidade</span>
+                    <select ref={inputLocation} className=" block w-full mt-1 rounded p-2 border border-gray-400">
+                        <option>Guará 1 e 2 (Grátis)</option>
+                        <option>Octogonal (R$ 5.00)</option>
+                        <option>Sudoeste (R$ 5.00)</option>
+                        <option>Cruzeiro (R$ 5.00)</option>
+                        <option>Águas Claras (R$ 5.00)</option>
+                        <option>Asa Sul (R$ 10.00)</option>
+                    </select>
 
-                <span className="text-black">Endereço</span>
-                <input ref={inputAddress} type="address" className="form-input mt-1 block w-full rounded p-2" placeholder="Endereço Completo" />
-            </label>
+                    <span className="text-black font-bold">Endereço</span>
+                    <input ref={inputAddress} type="address" className=" mt-1 block w-full rounded p-2 border border-gray-400" placeholder="Endereço Completo" />
+
+                    <span className="text-black font-bold">Observação</span>
+                    <textarea ref={inputObservation} placeholder="Sem queijo..." className="mt-1 block w-full rounded p-2 border border-gray-400"></textarea>
+
+                </label>
+            </div>
             <button onClick={() => handleOrder()} className="bg-green-500 rounded-lg p-2 mt-10">Enviar Mensagem</button>
         </div>
     )

@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect }from 'react';
 import { cartContext } from '../../context/Cart';
+import { AiOutlineMinusCircle , AiOutlinePlusCircle } from "react-icons/ai"
 
 
-export default function Product({name,price}){
+export default function Product({name,price,src}){
     const [number, setNumber] = useState(0)
     const {cart,setCart} = useContext(cartContext)
 
@@ -35,17 +36,22 @@ export default function Product({name,price}){
         setCart([...cart,{ name , price }])
         setNumber(number + 1)
     }
+
     return(
         <div className=''>
             <div className='relative bg-white w-11/12 m-auto rounded-lg flex flex-col items-center shadow-md'>
                 <div className='font-semibold absolute top-0 right-0 pr-2'>{number}</div>
-                <img src="./assets/esfirra.png" className='w-20 h-20 rounded-full mt-2'/>
-                <div className="font-semibold">{name}</div>
+                <img src={src} className='w-20 h-20 rounded-full mt-2'/>
+                <div className="font-semibold ">{name}</div>
                 <div>R${price.toFixed(2)}</div> 
             </div>
             <div className="flex justify-center py-2">
-                <img src="./assets/plus.png" className='px-3' alt="plus button" onClick={() => addProduct(number,name,price)} />
-                <img src="./assets/minus.png" className='px-3' alt="minus button" onClick={() => removeFromCart(number,name,price)} />
+                <button>
+                    <AiOutlinePlusCircle className='h-10 w-10' onClick={() => addProduct(number,name,price)} />
+                </button>
+                <button>
+                    <AiOutlineMinusCircle className='h-10 w-10' onClick={() => removeFromCart(number,name,price)} />
+                </button>
             </div>
         </div>
     )
