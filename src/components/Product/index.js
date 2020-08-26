@@ -40,8 +40,8 @@ export default function Product({name,price,src}){
     return(
         <div className=''>
             <div className='relative bg-white w-11/12 m-auto rounded-lg flex flex-col items-center shadow-md'>
-                <div className='font-semibold absolute top-0 right-0 pr-2'>{number}</div>
-                <img src={src} className='w-20 h-20 rounded-full mt-2'/>
+                <div className='font-semibold absolute top-0 right-0 pr-2' style={number !== 0 ? {color: "#dd6b20"} : {color: "black"}}>{number}</div>
+                <img src={src} className='w-20 h-20 rounded-full mt-2 object-cover'/>
                 <div className="font-semibold ">{name}</div>
                 <div>R${price.toFixed(2)}</div> 
             </div>

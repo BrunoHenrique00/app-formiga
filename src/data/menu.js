@@ -2,25 +2,25 @@ export const menu = [
     {
         name: 'Carne',
         price: 2.50,
-        src: './assets/esfirra.png'
+        src: './assets/carne.jpg'
     },
     {
-        name: 'Carne c/ Requeijao',
+        name: 'Carne c/ Requeijão',
         price: 3.00,
         src: './assets/esfirra.png'
     },
     {
-        name: 'Carne c/ cheddar',
+        name: 'Carne c/ Cheddar',
+        price: 3.00,
+        src: './assets/carne-cheddar.jpg'
+    },
+    {
+        name: 'Frango c/ Requeijão',
         price: 3.00,
         src: './assets/esfirra.png'
     },
     {
-        name: 'Frango c/ Requeijao',
-        price: 3.00,
-        src: './assets/esfirra.png'
-    },
-    {
-        name: 'Frango c/ cheddar',
+        name: 'Frango c/ Cheddar',
         price: 3.00,
         src: './assets/esfirra.png'
     },
@@ -37,7 +37,7 @@ export const menu = [
     {
         name: 'Calabresa',
         price: 3.00,
-        src: './assets/calabresa.jpg'
+        src: './assets/calabresa2.jpg'
     },
     {
         name: 'Chocolate',

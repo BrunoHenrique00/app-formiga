@@ -16,7 +16,7 @@ export default function Header({isCartShow}){
     return(
     <header className='flex bg-orange-600 items-center justify-around p-2 fixed w-full z-10 shadow-lg'>
         <Link href="/">
-            <div className="font-semibold">FORMIGAS ESFIRRAS</div>
+            <div className="font-semibold text-xl">FORMIGAS ESFIRRAS</div>
         </Link>
         {isCartShow && 
         <div onClick={handleCartClick} className="flex relative px-5">

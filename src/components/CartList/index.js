@@ -1,6 +1,7 @@
 import { cartContext } from '../../context/Cart';
 import {useContext ,useState , useRef} from "react"
 import stringPedido from "../../Functions/stringPedido";
+import isEmpty from "../../Functions/isEmpty";
 import { AiOutlineWhatsApp } from "react-icons/ai"
 import { VscTriangleRight } from "react-icons/vsc"
 
@@ -26,6 +27,7 @@ export default function CartList(){
     }
 
     function handleOrder(){
+        // transforma um objeto em array
         const orders = Object.entries(getCartList())
         const infoClient = {
             name: inputName.current.value,
@@ -37,8 +39,8 @@ export default function CartList(){
         const total = getCartPrice()
 
         const finalString = window.encodeURIComponent(stringPedido(orders,infoClient,total))
-
-        window.open("https://api.whatsapp.com/send?phone=556199187463&text=" + finalString , "_blank" )
+        // Verifica se preencheu os campos
+        isEmpty(infoClient) ? false : window.open("https://api.whatsapp.com/send?phone=556199187463&text=" + finalString , "_blank" )
     }
 
     return(
