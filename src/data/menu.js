@@ -22,7 +22,7 @@ export const menu = [
     {
         name: 'Frango c/ Cheddar',
         price: 3.00,
-        src: './assets/esfirra.png'
+        src: './assets/frango-cheddar.jpg'
     },
     {
         name: 'Frango',
@@ -32,7 +32,7 @@ export const menu = [
     {
         name: 'Queijo',
         price: 2.50,
-        src: './assets/esfirra.png'
+        src: './assets/queijo.jpg'
     },
     {
         name: 'Calabresa',
@@ -52,6 +52,6 @@ export const menu = [
     {
         name: 'Banana c/ chocolate',
         price: 4.00,
-        src: './assets/esfirra.png'
+        src: './assets/chocolate-banana.jpg'
     },
 ]
