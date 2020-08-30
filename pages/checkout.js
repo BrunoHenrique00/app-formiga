@@ -2,8 +2,17 @@ import Footer from '../src/components/Footer'
 import Header from '../src/components/Header'
 import CartList from '../src/components/CartList'
 import Head from 'next/head'
+import { useEffect } from 'react'
 
 export default function Checkout() {
+
+  useEffect(() => {
+    // faz com que renderize a tela do topo
+    window.scrollTo(0,0)
+  },[])
+
+
+
   return (
     <div>
       <Head>

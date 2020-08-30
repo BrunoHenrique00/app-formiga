@@ -2,27 +2,27 @@ export const menu = [
     {
         name: 'Carne',
         price: 2.50,
-        src: './assets/carne.jpg'
+        src: './assets/carne.jpeg'
     },
     {
         name: 'Carne c/ Requeijão',
         price: 3.00,
-        src: './assets/esfirra.png'
+        src: './assets/carne-requeijao.jpeg'
     },
     {
         name: 'Carne c/ Cheddar',
         price: 3.00,
-        src: './assets/carne-cheddar.jpg'
+        src: './assets/carne-cheddar.jpeg'
     },
     {
         name: 'Frango c/ Requeijão',
         price: 3.00,
-        src: './assets/esfirra.png'
+        src: './assets/frango-requeijao.jpeg'
     },
     {
         name: 'Frango c/ Cheddar',
         price: 3.00,
-        src: './assets/frango-cheddar.jpg'
+        src: './assets/frango-cheddar.jpeg'
     },
     {
         name: 'Frango',
@@ -42,7 +42,7 @@ export const menu = [
     {
         name: 'Chocolate',
         price: 3.50,
-        src: './assets/chocolate.jpg'
+        src: './assets/chocolate.jpeg'
     },
     {
         name: 'Banana c/ Canela',
@@ -52,6 +52,6 @@ export const menu = [
     {
         name: 'Banana c/ chocolate',
         price: 4.00,
-        src: './assets/chocolate-banana.jpg'
+        src: './assets/chocolate-banana.jpeg'
     },
 ]
