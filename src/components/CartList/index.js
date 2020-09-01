@@ -3,7 +3,7 @@ import {useContext ,useState , useRef} from "react"
 import stringPedido from "../../Functions/stringPedido";
 import isEmpty from "../../Functions/isEmpty";
 import { AiOutlineWhatsApp } from "react-icons/ai"
-import { VscTriangleRight } from "react-icons/vsc"
+import { VscTriangleRight } from "react-icons/vsc" 
 
 export default function CartList(){
     const {cart} = useContext(cartContext)
@@ -113,7 +113,7 @@ export default function CartList(){
                 </label>
             </div>
             <div className="pt-5 text-center">
-                <strong>Entregas: </strong>entregamos com um dia de antecedência!
+                <strong>Entregas: </strong>pedidos com um dia de antecedência!
             </div>
             <div className="pt-5">
                 <strong>ATENÇÃO:</strong> Nossas <strong>esfirras</strong> são <strong>congeladas!</strong>
