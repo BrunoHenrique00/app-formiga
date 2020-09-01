@@ -8,15 +8,31 @@ import { VscTriangleRight } from "react-icons/vsc"
 export default function CartList(){
     const {cart} = useContext(cartContext)
     const [list, setList] = useState({})
+    const [days, setDays] = useState([
+        'Domingo',
+        'Segunda-Feira',
+        'Terça-Feira',
+        'Quarta-Feira',
+        'Quinta-Feira',
+        'Sexta-Feira',
+        'Sábado',
+    ])
 
     const inputName = useRef()
     const inputPayment = useRef()
     const inputLocation = useRef()
     const inputAddress = useRef()
     const inputObservation = useRef()
+    const inputDay = useRef()
 
     function getCartPrice(){
         return cart === [] ? 0 : cart.reduce((sum, { price }) => sum + price,0)
+    }
+
+    function removeDay(){
+        // remove o dia atual do input de entrega
+        const removeDay = new Date().getDay()
+        const newDays = days.splice(removeDay,1)
     }
 
     function getCartList(name){
@@ -35,6 +51,7 @@ export default function CartList(){
             address: inputAddress.current.value ,
             location: inputLocation.current.value,
             observation: inputObservation.current.value,
+            day: inputDay.current.value,
         }
         const total = getCartPrice()
 
@@ -42,10 +59,9 @@ export default function CartList(){
         // Verifica se preencheu os campos
         isEmpty(infoClient) ? false : window.open("https://api.whatsapp.com/send?phone=556199187463&text=" + finalString , "_blank" )
     }
-
     return(
         <div className="bg-orange-700 pt-16 flex flex-col items-center">
-            <div className="bg-gray-300 w-5/6 rounded mb-4 p-2">
+            <div className="bg-white w-5/6 rounded mb-4 p-2">
                 {Object.entries(getCartList()).map(([key, value]) => (
                     <>
                     <div key={key} className="flex items-center bg-gray-300 rounded font-semibold py-1">
@@ -85,10 +101,19 @@ export default function CartList(){
                     <span className="text-black font-bold">Endereço</span>
                     <input ref={inputAddress} type="address" className=" mt-1 block w-full rounded p-2 border border-gray-400" placeholder="Endereço Completo" />
 
+                    <span className="text-black font-bold">Dia para entrega</span>
+                    <select ref={inputDay} className=" block w-full mt-1 rounded p-2 border border-gray-400">
+                        {removeDay()}
+                        { days.map(day => <option key={day}> {day} </option>) }
+                    </select>
+
                     <span className="text-black font-bold">Observação</span>
                     <textarea ref={inputObservation} placeholder="Sem queijo..." className="mt-1 block w-full rounded p-2 border border-gray-400"></textarea>
 
                 </label>
+            </div>
+            <div className="pt-5 text-center">
+                <strong>Entregas: </strong>entregamos com um dia de antecedência!
             </div>
             <div className="pt-5">
                 <strong>ATENÇÃO:</strong> Nossas <strong>esfirras</strong> são <strong>congeladas!</strong>

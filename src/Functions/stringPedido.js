@@ -1,4 +1,4 @@
-export default function stringPedido(arr,{ name, payment, address, location, observation}, total){
+export default function stringPedido(arr,{ name, payment, address, location, observation, day}, total){
 
     return (
         `*Olá, gostaria de fazer um pedido. Os itens escolhidos são*:\n  
@@ -13,6 +13,8 @@ ${arr.map(([key, value]) =>(`*${key}*\n*Quantidade:* ${value/2}
         *Forma de pagamento*: ${payment}
 
         *Observação*: ${observation ? observation : 'Nenhuma'}
+
+        *Dia para entrega*: ${day}
        
         *Endereço para entrega*:  
         ${address}, Cidade: ${location}`
