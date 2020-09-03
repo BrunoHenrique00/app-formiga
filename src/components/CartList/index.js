@@ -64,8 +64,8 @@ export default function CartList(){
             <div className="bg-white w-5/6 rounded mb-4 p-2">
                 {Object.entries(getCartList()).map(([key, value]) => (
                     <>
-                    <div key={key} className="flex items-center bg-gray-300 rounded font-semibold py-1">
-                    <VscTriangleRight /> {key}{' '}{value}x
+                    <div key={key} className="flex items-center bg-gray-300 rounded font-semibold py-1 my-1">
+                        <VscTriangleRight /> {key}{' '}{value}x
                     </div>
                     </>
                 ))
@@ -79,7 +79,7 @@ export default function CartList(){
                 <label className="block">
                     <span className="text-black font-bold">Nome</span>
                     <input ref={inputName} type="text" className=" mt-1 block w-full rounded p-2 border border-gray-400" placeholder="Seu Nome" />
-
+                    
                     <span className="text-black font-bold">Forma de pagamento</span>
                     <select ref={inputPayment} className=" block w-full mt-1 rounded p-2 border border-gray-400">
                         <option>Dinheiro</option>
