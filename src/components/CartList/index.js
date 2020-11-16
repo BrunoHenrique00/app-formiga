@@ -1,11 +1,16 @@
 import { cartContext } from '../../context/Cart';
-import {useContext ,useState , useRef} from "react"
+import {useContext ,useState , useRef , useEffect} from "react"
 import stringPedido from "../../Functions/stringPedido";
 import isEmpty from "../../Functions/isEmpty";
 import { AiOutlineWhatsApp } from "react-icons/ai"
 import { VscTriangleRight } from "react-icons/vsc" 
 
 export default function CartList(){
+
+    useEffect(() =>{
+        getCartList()
+    },[])
+
     const {cart} = useContext(cartContext)
     const [list, setList] = useState({})
     const [days, setDays] = useState([
@@ -36,15 +41,19 @@ export default function CartList(){
     }
 
     function getCartList(name){
+        const newList = {}
+        // Mapeia o objeto cart e conta quanto ha de cada item
         cart.forEach(function({name}) {
-            list[name] = (list[name] || 0) + 1;
+            newList[name] = (newList[name] || 0) + 1;
         });
-        return list
+
+        setList(newList)
     }
 
     function handleOrder(){
         // transforma um objeto em array
-        const orders = Object.entries(getCartList())
+        const orders = Object.entries(list)
+
         const infoClient = {
             name: inputName.current.value,
             payment: inputPayment.current.value,
@@ -62,7 +71,7 @@ export default function CartList(){
     return(
         <div className="bg-orange-700 pt-16 flex flex-col items-center">
             <div className="bg-white w-5/6 rounded mb-4 p-2">
-                {Object.entries(getCartList()).map(([key, value]) => (
+                {Object.entries(list).map(([key, value]) => (
                     <>
                     <div key={key} className="flex items-center bg-gray-300 rounded font-semibold py-1 my-1">
                         <VscTriangleRight /> {key}{' '}{value}x
