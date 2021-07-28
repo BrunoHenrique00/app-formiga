@@ -17,9 +17,9 @@
     "react-icons": "^3.11.0"
   },
   "devDependencies": {
-    "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.6.0"
+    "tailwindcss": "^2.2.7"
   },
   "license": "MIT"
 }
