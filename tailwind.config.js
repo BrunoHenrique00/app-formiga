@@ -4,6 +4,8 @@ module.exports = {
     extend: {
       colors: {
         'accent-1': '#333',
+        'orange-600': '#cb2c1d',
+        'orange-700': '#333333'
       },
     },
   },
