@@ -4,6 +4,7 @@ import stringPedido from "../../Functions/stringPedido";
 import isEmpty from "../../Functions/isEmpty";
 import { AiOutlineWhatsApp } from "react-icons/ai"
 import { VscTriangleRight } from "react-icons/vsc" 
+import { precosEntrega } from '../../data/precoEntrega'
 
 export default function CartList(){
 
@@ -13,15 +14,6 @@ export default function CartList(){
 
     const {cart} = useContext(cartContext)
     const [list, setList] = useState({})
-    const [days, setDays] = useState([
-        'Domingo',
-        'Segunda-Feira',
-        'Terça-Feira',
-        'Quarta-Feira',
-        'Quinta-Feira',
-        'Sexta-Feira',
-        'Sábado',
-    ])
 
     const inputName = useRef()
     const inputPayment = useRef()
@@ -32,12 +24,6 @@ export default function CartList(){
 
     function getCartPrice(){
         return cart === [] ? 0 : cart.reduce((sum, { price }) => sum + price,0)
-    }
-
-    function removeDay(){
-        // remove o dia atual do input de entrega
-        const removeDay = new Date().getDay()
-        const newDays = days.splice(removeDay,1)
     }
 
     function getCartList(name){
@@ -60,13 +46,12 @@ export default function CartList(){
             address: inputAddress.current.value ,
             location: inputLocation.current.value,
             observation: inputObservation.current.value,
-            day: inputDay.current.value,
         }
         const total = getCartPrice()
 
         const finalString = window.encodeURIComponent(stringPedido(orders,infoClient,total))
         // Verifica se preencheu os campos
-        isEmpty(infoClient) ? false : window.open("https://api.whatsapp.com/send?phone=556199187463&text=" + finalString , "_blank" )
+        isEmpty(infoClient) ? false : window.open("https://api.whatsapp.com/send?phone=5561999215126&text=" + finalString , "_blank" )
     }
     return(
         <div className="bg-orange-700 pt-16 flex flex-col items-center">
@@ -93,28 +78,17 @@ export default function CartList(){
                     <select ref={inputPayment} className=" block w-full mt-1 rounded p-2 border border-gray-400">
                         <option>Dinheiro</option>
                         <option>Cartão</option>
-                        <option>PicPay</option>
                     </select>
 
                     <span className="text-black font-bold">Localidade</span>
                     <select ref={inputLocation} className=" block w-full mt-1 rounded p-2 border border-gray-400">
-                        <option>Guará 1 (Grátis)</option>
-                        <option>Guará 2 (Grátis)</option>
-                        <option>Octogonal (R$ 5.00)</option>
-                        <option>Sudoeste (R$ 5.00)</option>
-                        <option>Cruzeiro (R$ 5.00)</option>
-                        <option>Águas Claras (R$ 5.00)</option>
-                        <option>Asa Sul (R$ 10.00)</option>
+                        {precosEntrega.map(preco => (
+                            <option>{preco.label}</option>
+                        ))}
                     </select>
 
                     <span className="text-black font-bold">Endereço</span>
                     <input ref={inputAddress} type="address" className=" mt-1 block w-full rounded p-2 border border-gray-400" placeholder="Endereço Completo" />
-
-                    <span className="text-black font-bold">Dia para entrega</span>
-                    <select ref={inputDay} className=" block w-full mt-1 rounded p-2 border border-gray-400">
-                        {removeDay()}
-                        { days.map(day => <option key={day}> {day} </option>) }
-                    </select>
 
                     <span className="text-black font-bold">Observação</span>
                     <textarea ref={inputObservation} placeholder="Sem queijo..." className="mt-1 block w-full rounded p-2 border border-gray-400"></textarea>

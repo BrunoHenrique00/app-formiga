@@ -10,7 +10,7 @@ export default function Header({ isCartShow }) {
   const router = useRouter()
 
   function handleCartClick() {
-    cart.length < 8 ? window.alert('Você precisa pedir pelo menos 8 esfirras :)') : router.push('/checkout')
+    cart === [] ? 0 : cart.reduce((sum, { price }) => sum + price,0) < 8 ? window.alert('Você precisa pedirmais de R$20,00 Reais :)') : router.push('/checkout')
   }
 
   return (

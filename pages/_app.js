@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <CartProvider>
       <IconContext.Provider
-        value={{ color: 'white', size: '50px' }}
+        value={{ color: 'white' }}
       >
         <Component {...pageProps} />
       </IconContext.Provider>
